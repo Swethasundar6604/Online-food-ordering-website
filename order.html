@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order - Food Ordering Website</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?cs=srgb&dl=pexels-chan-walrus-958545.jpg&fm=jpg'); /* Specify the path to your background image */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Do not repeat the background image */
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: #fff; /* Set font color to white */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .order-form {
+            margin: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .confirmation {
+            margin: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+    <script>
+        // JavaScript function to handle order confirmation
+        function confirmOrder() {
+            var name = document.getElementById("name").value;
+            var phoneNumber = document.getElementById("phone").value;
+            var address = document.getElementById("address").value;
+            
+            // Validation
+            if (name.trim() === "" || phoneNumber.trim() === "" || address.trim() === "") {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            // Display confirmation message
+            var confirmationMsg = "Thank you, " + name + ", for your order!\n";
+            confirmationMsg += "It will be delivered to " + address + " within 30 minutes.\n";
+            document.getElementById("confirmationMessage").innerText = confirmationMsg;
+            document.getElementById("confirmationSection").style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Food Ordering Website</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="order.html">Order</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="order-form">
+        <h2>Order Details</h2>
+        <form id="orderForm">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="phone">Phone Number:</label><br>
+            <input type="text" id="phone" name="phone" required><br><br>
+            <label for="address">Address:</label><br>
+            <textarea id="address" name="address" required></textarea><br><br>
+            <button type="button" onclick="confirmOrder()">Confirm Order</button>
+        </form>
+    </section>
+
+    <section class="confirmation" id="confirmationSection" style="display: none;">
+        <h2>Order Confirmation</h2>
+        <p id="confirmationMessage"></p>
+    </section>
+</body>
+</html>

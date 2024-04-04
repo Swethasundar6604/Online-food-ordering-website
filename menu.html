@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Food Ordering Website</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav a {
+            color: #fff; /* Set font color to white */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .menu {
+            margin: 20px;
+        }
+
+        .item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+        }
+
+        .proceed-btn {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+        }
+
+        .proceed-btn:hover {
+            background-color: #555;
+        }
+
+        /* Added styles for images */
+        .item img {
+            max-width: 100px;
+            max-height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .quantity-input {
+            width: 50px;
+        }
+    </style>
+    <script>
+        // JavaScript function to handle ordering
+        function orderItems() {
+            var itemsToOrder = [];
+
+            // Get all quantity inputs and loop through them
+            var quantityInputs = document.querySelectorAll('.quantity-input');
+            quantityInputs.forEach(function(input) {
+                var quantity = parseInt(input.value);
+                if (quantity > 0) {
+                    var itemName = input.dataset.itemName;
+                    var price = parseFloat(input.dataset.itemPrice);
+                    var total = price * quantity;
+                    itemsToOrder.push({ name: itemName, quantity: quantity, total: total });
+                }
+            });
+
+            // If no items selected, show alert
+            if (itemsToOrder.length === 0) {
+                alert("Please select at least one item to order.");
+                return;
+            }
+
+            // Process the order (you can customize this part based on your requirements)
+            var orderSummary = "Your order summary:\n";
+            itemsToOrder.forEach(function(item) {
+                orderSummary += item.quantity + " " + item.name + "(s) - $" + item.total + "\n";
+            });
+            alert(orderSummary);
+
+            // Here you can navigate to the order page with additional information if needed
+            window.location.href = "order.html"; // Example navigation to order page
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Food Ordering Website</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="order.html">Order</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="menu">
+        <h1>MENU</h1>
+        <h2>Biryani</h2>
+        <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPXb5IL87meks8WaR-NhCKLyOUaAGP68CwphFZDPFjew&s" width="600" height="600">
+            <h4>Chicken Biryani</h4>
+            <p class="price">$10</p>
+            <label for="chicken-biryani-quantity">Quantity:</label>
+            <input type="number" id="chicken-biryani-quantity" class="quantity-input" value="0" min="0" data-item-name="Chicken Biryani" data-item-price="10">
+        </div>
+
+        <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI_2koSIy9e39uDJzjY0bqRfMQlpCdzXZbZETmCmicJg&s" width="600" height="600" >
+            <h4>Mutton Biryani</h4>
+            <p class="price">$12</p>
+            <label for="mutton-biryani-quantity">Quantity:</label>
+            <input type="number" id="mutton-biryani-quantity" class="quantity-input" value="0" min="0" data-item-name="Mutton Biryani" data-item-price="12">
+        </div>
+
+        <div class="item">
+            <img src="https://t3.ftcdn.net/jpg/06/11/78/04/360_F_611780461_nkB8lWLeg93Dlh5HICc78ukRQxhIoWEt.jpg" width="600" height="600" >
+            <h4>Vegetable Biryani</h4>
+            <p class="price">$9</p>
+            <label for="vegetable-biryani-quantity">Quantity:</label>
+            <input type="number" id="vegetable-biryani-quantity" class="quantity-input" value="0" min="0" data-item-name="Vegetable Biryani" data-item-price="9">
+        </div>
+        <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkFBK13BaL1sHJQ8owR1JU5vgsCE7ENBxeqxXj1Dy1xg&s" width="600" height="600">
+            <h4>Mushroom Biryani</h4>
+            <p class="price">$9</p>
+            <label for="Mushroom-biryani-quantity">Quantity:</label>
+            <input type="number" id="vegetable-biryani-quantity" class="quantity-input" value="0" min="0" data-item-name="Vegetable Biryani" data-item-price="9">
+        </div>
+        
+        <!-- Add more biryani items as needed -->
+
+        <h2>Meals</h2>
+        <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4zcQyU1I5XuWwSa14HOl2rs8k5HowzRAVRccDanQdPg&s "width="600" height="600" >
+            <h4>Veg Meals</h4>
+            <p class="price">$8</p>
+            <label for="veg-meals-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+        </div>
+        <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8q1ArrsitywPVDwnQMRDC_k-ZED_6f7Ug7_iEcHFiNhbqX9RxsXAbJ1uBmARlDjStjcw&usqp=CAU" "width="600" height="600">
+            <h4>Non-Veg Meals</h4>
+            <p class="price">$8</p>
+            <label for="non-veg-meals-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+        </div>
+        <!-- Add more meal items as needed -->
+
+        <!-- Add more categories and items as needed -->
+    
+         <h2>Fried Rice</h2>
+         <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeI55V9nJBwuCTpMz-SvoBdet50WZaGuncq5psE9JeAw&s" "width="600" height="600" >
+            <h4>Vegetable Rice</h4>
+            <p class="price">$8</p>
+            <label for="vegetable-rice-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+          </div>
+          <div class="item">
+            <img src="https://www.shutterstock.com/image-photo/indian-cuisinehealthy-tasty-homemade-chicken-260nw-658631542.jpg" "width="600" height="600" >
+            <h4>Chicken rice</h4>
+            <p class="price">$8</p>
+            <label for="Chicken-rice-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+           <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1VQsyPxhlJWlpXJyje3psotlHx38dbDdMGzXxdqoZEg&s" "width="600" height="600">
+            <h4>Mushroom rice</h4>
+            <p class="price">$8</p>
+            <label for="Mushroom-rice-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+            <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5oJBxe5St8V7J_pmMmXzt87vT5ckIZksj2qXEqULOqA&s" "width="600" height="600" >
+            <h4>Paneer rice</h4>
+            <p class="price">$8</p>
+            <label for="Paneer-rice-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+           <h2>Fried noodles</h2>
+           <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVUTBJu7PfoCl5MWys7BONj11npmQ7X5yUasGJ2MuVWg&s" "width="600" height="600">
+            <h4>Chicken noodels</h4>
+            <p class="price">$8</p>
+            <label for="Chicken-noodels-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+            <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdB3OW3SOAu8LzqXF0unyNFa_GJxyoczgtTEDjuP39g&s" "width="600" height="600" >
+            <h4>Veg noodels</h4>
+            <p class="price">$8</p>
+            <label for="Veg-noodels-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+            <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwgRXS3GQOV3dgmJ3eTpGBmPTCTLUKN9FkwuxqG3oNHg&s" "width="600" height="600">
+>
+            <h4>Egg noodels</h4>
+            <p class="price">$8</p>
+            <label for="Egg-noodels-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+            <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWtuJfO3d2kjmFpeRTuAmHraejI9P5DO4vGdqRJbO9xg&s" "width="600" height="600">
+            <h4>Mushroom noodels</h4>
+            <p class="price">$8</p>
+            <label for="Mushroom-noodels-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+           <h2>Dosa Items</h2>
+           <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeHwLb_lCjSJfaZGtnRUkQ97Vq3LbCT_2YjEjOi_vUCA&s" "width="600" height="600">
+            <h4>Plain Dosa</h4>
+            <p class="price">$8</p>
+            <label for="Plain-Dosa-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+            <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_Hp8UkPu5Z97PY8E-cCd_ia21mKeQvMSu-YODWwWD&s" "width="600" height="600">
+            <h4>Masala Dosa</h4>
+            <p class="price">$8</p>
+            <label for="Masala-Dosa-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+            <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLZ2C5DcXoECg3Q1WBPJ936Ykq4mS_eUSVTbVhPDa-CQ&s" "width="600" height="600">
+            <h4>Onion Dosa</h4>
+            <p class="price">$8</p>
+            <label for="Onion-Dosa-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+            <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRBlgz9KOMq4kIYM2Qq0bJFDBFz8Cde8AlW6WZyy0PHg&s" "width="600" height="600" >
+            <h4>Mushroom Dosa</h4>
+            <p class="price">$8</p>
+            <label for="Mushroom-Dosa-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+           <h2>Gravy Items</h2>
+           <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-FfC_qzDd-XS_lw9A2pGMDCQaT2e72VipBfWNqP5_vQ&s" "width="600" height="600">
+            <h4>Butter Chicken</h4>
+            <p class="price">$8</p>
+            <label for="Butter-Chicken-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+            <div class="item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHxSS2akod5ADCbEIk6xTZJqPUrRQxlSa6zo1b11CKEQ&s" "width="600" height="600">
+            <h4>Paneer butter masala</h4>
+            <p class="price">$8</p>
+            <label for="Paneer-butter-masala-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+           <div class="item">
+            <img src="https://kitchenofdebjani.com/wp-content/uploads/2023/04/easy-indian-chicken-curry-Recipe-for-beginners-Debjanir-rannaghar.jpg" "width="600" height="600" >
+            <h4>Chicken curry</h4>
+            <p class="price">$8</p>
+            <label for=Chicken-curry-masala-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+           <div class="item">
+            <img src="https://t4.ftcdn.net/jpg/03/90/29/41/360_F_390294136_VguOWSfQzueKagqq3SWqK1P8fubMhn02.jpg" "width="600" height="600">
+            <h4>Mutton curry</h4>
+            <p class="price">$8</p>
+            <label for=Mutton-curry-masala-quantity">Quantity:</label>
+            <input type="number" id="veg-meals-quantity" class="quantity-input" value="0" min="0" data-item-name="Veg Meals" data-item-price="8">
+           </div>
+    </section>
+    <!-- Common "Order" button -->
+    <button class="proceed-btn" onclick="orderItems()">Order</button>
+</body>
+</html>
